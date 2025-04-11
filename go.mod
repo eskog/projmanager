@@ -1,4 +1,4 @@
-module github.com/eskog/proj
+module github.com/eskog/projmanager
 
 go 1.24.2
 

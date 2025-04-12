@@ -8,8 +8,8 @@ import (
 )
 
 const WORKFLOWS = "/.github/workflows"
-const CI = "assets/Workflow/CI.yml"
-const CD = "assets/Workflow/CD.yml"
+const CI = "/Users/skogen/Projects/Templates/Workflow/CI.yml"
+const CD = "/Users/skogen/Projects/Templates/Workflow/CD.yml"
 
 func cicd() error {
 	dst, err := os.Getwd()

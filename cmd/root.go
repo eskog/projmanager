@@ -11,7 +11,7 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "proj",
+	Use:   "projmanager",
 	Short: "initialize a new project",
 	Long:  `Initialize a project folder with helpful configurations such as gitignore files, dependabot ect`,
 	// Uncomment the following line if your bare application

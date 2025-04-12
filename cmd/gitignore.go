@@ -8,7 +8,7 @@ import (
 	"github.com/eskog/projmanager/internal/helpers"
 )
 
-const GOGITIGNORE = "assets/gitignore/go.gitignore"
+const GOGITIGNORE = "/Users/skogen/Projects/Templates/gitignore/go.gitignore"
 
 func gitignore() error {
 

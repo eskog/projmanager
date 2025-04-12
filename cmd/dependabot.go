@@ -8,7 +8,7 @@ import (
 )
 
 const GITHUBFOLDER = "/.github"
-const DEPENDABOT = "assets/Dependabot/dependabot.yml.go"
+const DEPENDABOT = "/Users/skogen/Projects/Templates/Dependabot/dependabot.yml.go"
 
 func dependabot() error {
 	dst, err := os.Getwd()

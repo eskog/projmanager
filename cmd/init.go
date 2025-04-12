@@ -26,6 +26,9 @@ to quickly create a Cobra application.`,
 		if err := dependabot(); err != nil {
 			log.Printf("error creating dependabot.yml: %s", err)
 		}
+		if err := cicd(); err != nil {
+			log.Printf("error creating CI/CD files: %s", err)
+		}
 	},
 }
 
@@ -51,9 +54,20 @@ var initDependabotCmd = &cobra.Command{
 	},
 }
 
+var initCICDCmd = &cobra.Command{
+	Use:   "cicd",
+	Short: "init CI/CD workflow files",
+	Long:  `Initialize default CI/CD files`,
+	Run: func(cmd *cobra.Command, args []string) {
+		if err := cicd(); err != nil {
+			log.Fatal(err)
+		}
+	},
+}
+
 func init() {
 	rootCmd.AddCommand(initCmd)
-	initCmd.AddCommand(initGitIgnoreCmd, initDependabotCmd)
+	initCmd.AddCommand(initGitIgnoreCmd, initDependabotCmd, initCICDCmd)
 
 	// Here you will define your flags and configuration settings.
 

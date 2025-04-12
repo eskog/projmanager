@@ -15,9 +15,11 @@ func Filecopy(src, dst string) error {
 		return fmt.Errorf("Unable to create empty destination file:%s: %w", dst, err)
 	}
 	defer file.Close()
+
 	_, err = file.Write(content)
 	if err != nil {
 		return fmt.Errorf("Unable to write to %s: %w", dst, err)
 	}
+
 	return nil
 }

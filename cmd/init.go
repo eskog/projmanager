@@ -23,6 +23,9 @@ to quickly create a Cobra application.`,
 		if err := gitignore(); err != nil {
 			log.Printf("Error creating gitignore: %s", err)
 		}
+		if err := dependabot(); err != nil {
+			log.Printf("error creating dependabot.yml: %s", err)
+		}
 	},
 }
 
@@ -37,9 +40,20 @@ var initGitIgnoreCmd = &cobra.Command{
 	},
 }
 
+var initDependabotCmd = &cobra.Command{
+	Use:   "dependabot",
+	Short: "init a dependabot.yml file",
+	Long:  `Initialize an default dependabot.yml file`,
+	Run: func(cmd *cobra.Command, args []string) {
+		if err := dependabot(); err != nil {
+			log.Fatal(err)
+		}
+	},
+}
+
 func init() {
 	rootCmd.AddCommand(initCmd)
-	initCmd.AddCommand(initGitIgnoreCmd)
+	initCmd.AddCommand(initGitIgnoreCmd, initDependabotCmd)
 
 	// Here you will define your flags and configuration settings.
 

@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/eskog/projmanager/internal/helpers"
@@ -27,6 +28,7 @@ func dependabot() error {
 	if err != nil {
 		return fmt.Errorf("unable to copy dependabot.yml to destination: %w", err)
 	}
+	log.Println("dependabot.yml added successfully")
 
 	return nil
 }

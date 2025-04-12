@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/eskog/projmanager/internal/helpers"
@@ -29,6 +30,6 @@ func cicd() error {
 	if err := helpers.Filecopy(CI, dst+WORKFLOWS+"/CD.yml"); err != nil {
 		return fmt.Errorf("unable to copy CD.yml to dst %s: %w", dst+WORKFLOWS+"/CD.yml", err)
 	}
-
+	log.Println("CI/CD workflows added successfully")
 	return nil
 }

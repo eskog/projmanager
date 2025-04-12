@@ -14,7 +14,7 @@ func gitignore() error {
 
 	dst, err := os.Getwd()
 	if err != nil {
-		return fmt.Errorf("Unable to get PWD: %w", err)
+		return fmt.Errorf("unable to get PWD: %w", err)
 	}
 	dst = dst + "/.gitignore"
 	if err = helpers.Filecopy(GOGITIGNORE, dst); err != nil {

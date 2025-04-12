@@ -10,9 +10,8 @@ import (
 const basePath = "/Users/skogen/Projects/Templates"
 
 func Filecopy(src, dst string) error {
-	src, dst, err := verifypaths(src, dst)
-	if err != nil {
-		return fmt.Errorf("error sanitizing filepaths: %w", err)
+	if err := verifyPaths(src, dst); err != nil {
+		return fmt.Errorf("filepaths incorrect: %w", err)
 	}
 	content, err := os.ReadFile(filepath.Clean(src))
 	if err != nil {
@@ -32,15 +31,15 @@ func Filecopy(src, dst string) error {
 	return nil
 }
 
-func verifypaths(src, dst string) (string, string, error) {
+func verifyPaths(src, dst string) error {
 	if !strings.HasPrefix(src, basePath) {
-		return "", "", fmt.Errorf("invalid path to template file: %s", src)
+		return fmt.Errorf("invalid path to template file: %s", src)
 	}
 
 	workingdir, _ := os.Getwd()
 	if !strings.HasPrefix(dst, workingdir) {
-		return "", "", fmt.Errorf("invalid destination path: %s", dst)
+		return fmt.Errorf("invalid destination path: %s", dst)
 	}
 
-	return src, dst, nil
+	return nil
 }

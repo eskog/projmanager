@@ -16,7 +16,7 @@ func dependabot() error {
 		return fmt.Errorf("Unable to get PWD: %w", err)
 	}
 
-	if !dirExists(dst + GITHUBFOLDER) {
+	if !helpers.DirExists(dst + GITHUBFOLDER) {
 		err = os.Mkdir(dst+GITHUBFOLDER, 0755)
 		if err != nil {
 			return fmt.Errorf("Unable to create directory at path: %s: %w", dst+GITHUBFOLDER, err)
@@ -29,12 +29,4 @@ func dependabot() error {
 	}
 
 	return nil
-}
-
-func dirExists(path string) bool {
-	info, err := os.Stat(path)
-	if os.IsNotExist(err) {
-		return false
-	}
-	return err == nil && info.IsDir()
 }
